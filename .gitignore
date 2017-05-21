@@ -30,3 +30,6 @@ cmake-build-debug/
 
 ## File-based project format:
 *.iws
+
+## Build
+target/
