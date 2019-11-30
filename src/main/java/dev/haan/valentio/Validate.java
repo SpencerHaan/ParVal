@@ -18,4 +18,12 @@ public final class Validate {
         Stream.of(validators).forEach(v -> v.validate(GENERIC_PARAMETER_NAME, value));
         return value;
     }
+
+    @SafeVarargs
+    public static <V> V optional(V value, Validator<V>...validators) {
+        if (value != null) {
+            Stream.of(validators).forEach(v -> v.validate(GENERIC_PARAMETER_NAME, value));
+        }
+        return value;
+    }
 }
