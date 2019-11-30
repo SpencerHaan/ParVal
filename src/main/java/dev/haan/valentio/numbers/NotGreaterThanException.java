@@ -1,4 +1,4 @@
-package dev.haan.valentio.number;
+package dev.haan.valentio.numbers;
 
 import static java.util.Objects.requireNonNull;
 

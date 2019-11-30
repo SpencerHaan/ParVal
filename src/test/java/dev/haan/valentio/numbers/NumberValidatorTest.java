@@ -1,10 +1,10 @@
-package dev.haan.valentio.number;
+package dev.haan.valentio.numbers;
 
 import static dev.haan.valentio.Validate.required;
-import static dev.haan.valentio.number.NumberValidator.gt;
-import static dev.haan.valentio.number.NumberValidator.gte;
-import static dev.haan.valentio.number.NumberValidator.lt;
-import static dev.haan.valentio.number.NumberValidator.lte;
+import static dev.haan.valentio.numbers.NumberValidator.gt;
+import static dev.haan.valentio.numbers.NumberValidator.gte;
+import static dev.haan.valentio.numbers.NumberValidator.lt;
+import static dev.haan.valentio.numbers.NumberValidator.lte;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
