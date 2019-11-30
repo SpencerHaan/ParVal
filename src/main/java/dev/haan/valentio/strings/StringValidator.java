@@ -15,4 +15,12 @@ public final class StringValidator {
             }
         };
     }
+
+    public static <S extends String> Validator<S> maxLength(int length) {
+        return (propertyName, value) -> {
+            if (value.length() > length) {
+                throw new NotMaximumLengthException(propertyName, length);
+            }
+        };
+    }
 }

@@ -1,12 +1,12 @@
 package dev.haan.valentio.strings;
 
-import static dev.haan.valentio.Validate.*;
-import static dev.haan.valentio.strings.StringValidator.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static dev.haan.valentio.Validate.required;
+import static dev.haan.valentio.strings.StringValidator.maxLength;
+import static dev.haan.valentio.strings.StringValidator.minLength;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import dev.haan.valentio.Validate;
 
 class StringValidatorTest {
 
@@ -25,5 +25,20 @@ class StringValidatorTest {
     @Test
     void minLength_over() {
         assertDoesNotThrow(() -> required(TEST_STRING, minLength(3)));
+    }
+
+    @Test
+    void maxLength_under() {
+        assertDoesNotThrow(() -> required(TEST_STRING, maxLength(4)));
+    }
+
+    @Test
+    void maxLength_equal() {
+        assertDoesNotThrow(() -> required(TEST_STRING, maxLength(4)));
+    }
+
+    @Test
+    void maxLength_over() {
+        assertThrows(NotMaximumLengthException.class, () -> required(TEST_STRING, maxLength(3)));
     }
 }
