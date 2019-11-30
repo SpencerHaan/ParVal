@@ -1,10 +1,10 @@
-package dev.haan.parval.number;
+package dev.haan.valentio.number;
 
-import static dev.haan.parval.ParVal.required;
-import static dev.haan.parval.number.NumberValidator.gt;
-import static dev.haan.parval.number.NumberValidator.gte;
-import static dev.haan.parval.number.NumberValidator.lt;
-import static dev.haan.parval.number.NumberValidator.lte;
+import static dev.haan.valentio.Validate.required;
+import static dev.haan.valentio.number.NumberValidator.gt;
+import static dev.haan.valentio.number.NumberValidator.gte;
+import static dev.haan.valentio.number.NumberValidator.lt;
+import static dev.haan.valentio.number.NumberValidator.lte;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

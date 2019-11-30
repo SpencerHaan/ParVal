@@ -1,8 +1,8 @@
-package dev.haan.parval.number;
+package dev.haan.valentio.number;
 
 import static java.util.Objects.requireNonNull;
 
-import dev.haan.parval.Validator;
+import dev.haan.valentio.Validator;
 
 public final class NumberValidator {
 

@@ -1,8 +1,8 @@
-package dev.haan.parval;
+package dev.haan.valentio;
 
 import static java.util.Objects.requireNonNull;
 
-public class ValueRequiredException extends ParValException {
+public class ValueRequiredException extends ValidationException {
 
     private final String propertyName;
 

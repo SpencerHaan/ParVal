@@ -1,4 +1,4 @@
-package dev.haan.parval.number;
+package dev.haan.valentio.number;
 
 import static java.util.Objects.requireNonNull;
 

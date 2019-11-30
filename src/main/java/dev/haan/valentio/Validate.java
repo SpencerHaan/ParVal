@@ -1,12 +1,12 @@
-package dev.haan.parval;
+package dev.haan.valentio;
 
 import java.util.stream.Stream;
 
-public final class ParVal {
+public final class Validate {
 
     private static final String GENERIC_PARAMETER_NAME = "parameter";
 
-    private ParVal() {
+    private Validate() {
         // Prevent instantiation
     }
 

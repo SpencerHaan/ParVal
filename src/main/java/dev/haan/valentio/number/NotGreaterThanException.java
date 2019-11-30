@@ -1,14 +1,14 @@
-package dev.haan.parval.number;
+package dev.haan.valentio.number;
 
 import static java.util.Objects.requireNonNull;
 
-public class NotLessThanOrEqualException extends NumberValidationException {
+public class NotGreaterThanException extends NumberValidationException {
 
     private final String propertyName;
     private final Number value;
 
-    public NotLessThanOrEqualException(String propertyName, Number value) {
-        super("{0} must be less than or equal to {1}", propertyName, value);
+    public NotGreaterThanException(String propertyName, Number value) {
+        super("{0} must be greater than {1}", propertyName, value);
         this.propertyName = requireNonNull(propertyName);
         this.value = requireNonNull(value);
     }
