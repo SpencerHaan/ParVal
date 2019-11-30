@@ -24,6 +24,12 @@ public final class StringValidator {
         };
     }
 
+    public static <S extends String> Validator<S> lengthBetween(int lower, int upper) {
+        Validator<S> minLength = minLength(lower);
+        Validator<S> maxLength = maxLength(upper);
+        return minLength.andThen(maxLength);
+    }
+
     public static <S extends String> Validator<S> notBlank() {
         return (propertyName, value) -> {
             if (value.trim().isEmpty()) {

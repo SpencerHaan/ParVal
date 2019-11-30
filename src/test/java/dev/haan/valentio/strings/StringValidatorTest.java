@@ -1,6 +1,7 @@
 package dev.haan.valentio.strings;
 
 import static dev.haan.valentio.Validate.required;
+import static dev.haan.valentio.strings.StringValidator.lengthBetween;
 import static dev.haan.valentio.strings.StringValidator.maxLength;
 import static dev.haan.valentio.strings.StringValidator.minLength;
 import static dev.haan.valentio.strings.StringValidator.notBlank;
@@ -41,6 +42,31 @@ class StringValidatorTest {
     @Test
     void maxLength_over() {
         assertThrows(NotMaximumLengthException.class, () -> required(TEST_STRING, maxLength(3)));
+    }
+
+    @Test
+    void lengthBetween_inside() {
+        assertDoesNotThrow(() -> required(TEST_STRING, lengthBetween(3,5)));
+    }
+
+    @Test
+    void lengthBetween_equal_lower() {
+        assertDoesNotThrow(() -> required(TEST_STRING, lengthBetween(4,5)));
+    }
+
+    @Test
+    void lengthBetween_equal_upper() {
+        assertDoesNotThrow(() -> required(TEST_STRING, lengthBetween(3,4)));
+    }
+
+    @Test
+    void lengthBetween_outside_lower() {
+        assertThrows(NotMinimumLengthException.class, () -> required(TEST_STRING, lengthBetween(5,6)));
+    }
+
+    @Test
+    void lengthBetween_outside_upper() {
+        assertThrows(NotMaximumLengthException.class, () -> required(TEST_STRING, lengthBetween(2,3)));
     }
 
     @Test
