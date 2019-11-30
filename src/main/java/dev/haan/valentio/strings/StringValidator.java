@@ -23,4 +23,12 @@ public final class StringValidator {
             }
         };
     }
+
+    public static <S extends String> Validator<S> notBlank() {
+        return (propertyName, value) -> {
+            if (value.trim().isEmpty()) {
+                throw new NotBlankException(propertyName);
+            }
+        };
+    }
 }
