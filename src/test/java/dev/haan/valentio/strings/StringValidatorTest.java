@@ -3,6 +3,7 @@ package dev.haan.valentio.strings;
 import static dev.haan.valentio.Validate.required;
 import static dev.haan.valentio.strings.StringValidator.lengthBetween;
 import static dev.haan.valentio.strings.StringValidator.maxLength;
+import static dev.haan.valentio.strings.StringValidator.maxSize;
 import static dev.haan.valentio.strings.StringValidator.minLength;
 import static dev.haan.valentio.strings.StringValidator.notBlank;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -67,6 +68,21 @@ class StringValidatorTest {
     @Test
     void lengthBetween_outside_upper() {
         assertThrows(NotMaximumLengthException.class, () -> required(TEST_STRING, lengthBetween(2,3)));
+    }
+
+    @Test
+    void maxSize_under() {
+        assertDoesNotThrow(() -> required(TEST_STRING, maxSize(5)));
+    }
+
+    @Test
+    void maxSize_equal() {
+        assertDoesNotThrow(() -> required(TEST_STRING, maxSize(4)));
+    }
+
+    @Test
+    void maxSize_over() {
+        assertThrows(NotMaximumSizeException.class, () -> required(TEST_STRING, maxSize(3)));
     }
 
     @Test

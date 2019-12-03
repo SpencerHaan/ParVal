@@ -1,5 +1,7 @@
 package dev.haan.valentio.strings;
 
+import java.nio.charset.Charset;
+
 import dev.haan.valentio.Validator;
 
 public final class StringValidator {
@@ -28,6 +30,18 @@ public final class StringValidator {
         Validator<S> minLength = minLength(lower);
         Validator<S> maxLength = maxLength(upper);
         return minLength.andThen(maxLength);
+    }
+
+    public static <S extends String> Validator<S> maxSize(int size) {
+        return maxSize(size, Charset.defaultCharset());
+    }
+
+    public static <S extends String> Validator<S> maxSize(int size, Charset charset) {
+        return (propertyName, value) -> {
+            if (value.getBytes(charset).length > size) {
+                throw new NotMaximumSizeException(propertyName, size);
+            }
+        };
     }
 
     public static <S extends String> Validator<S> notBlank() {
