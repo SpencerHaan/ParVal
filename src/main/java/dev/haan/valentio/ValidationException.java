@@ -2,7 +2,7 @@ package dev.haan.valentio;
 
 import static java.text.MessageFormat.format;
 
-public class ValidationException extends IllegalArgumentException {
+public class ValidationException extends RuntimeException {
 
     public ValidationException(String message, Object... parameters) {
         super(format(message, parameters));
