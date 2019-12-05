@@ -1,10 +1,9 @@
 package dev.haan.valentio.numbers;
 
-import static dev.haan.valentio.Validate.require;
-import static dev.haan.valentio.numbers.NumberValidator.gt;
-import static dev.haan.valentio.numbers.NumberValidator.gte;
-import static dev.haan.valentio.numbers.NumberValidator.lt;
-import static dev.haan.valentio.numbers.NumberValidator.lte;
+import static dev.haan.valentio.numbers.NumberValidator.atLeast;
+import static dev.haan.valentio.numbers.NumberValidator.atMost;
+import static dev.haan.valentio.numbers.NumberValidator.over;
+import static dev.haan.valentio.numbers.NumberValidator.under;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -20,62 +19,62 @@ class NumberValidatorTest {
     private static final Long OVER = 3L;
 
     @Test
-    void required_number_expectLessThan_under() {
-        assertDoesNotThrow(() -> Validate.require(UNDER, lt(TARGET)));
+    void required_number_mustBeUnder_isUnder() {
+        assertDoesNotThrow(() -> Validate.require(UNDER, under(TARGET)));
     }
 
     @Test
-    void required_number_expectLessThan_equals() {
-        assertThrows(NotLessThanException.class, () -> Validate.require(EQUAL, lt(TARGET)));
+    void required_number_mustBeUnder_isEqual() {
+        assertThrows(NotUnderException.class, () -> Validate.require(EQUAL, under(TARGET)));
     }
 
     @Test
-    void required_number_expectLessThan_over() {
-        assertThrows(NotLessThanException.class, () -> Validate.require(OVER, lt(TARGET)));
+    void required_number_mustBeUnder_isOver() {
+        assertThrows(NotUnderException.class, () -> Validate.require(OVER, under(TARGET)));
     }
 
     @Test
-    void required_number_expectLessThanOrEquals_under() {
-        assertDoesNotThrow(() -> Validate.require(UNDER, lte(TARGET)));
+    void required_number_mustBeAtLeast_isUnder() {
+        assertDoesNotThrow(() -> Validate.require(UNDER, atLeast(TARGET)));
     }
 
     @Test
-    void required_number_expectLessThanOrEquals_equals() {
-        assertDoesNotThrow(() -> Validate.require(EQUAL, lte(TARGET)));
+    void required_number_mustBeAtLeast_isEqual() {
+        assertDoesNotThrow(() -> Validate.require(EQUAL, atLeast(TARGET)));
     }
 
     @Test
-    void required_number_expectLessThanOrEquals_over() {
-        assertThrows(NotLessThanOrEqualException.class, () -> Validate.require(OVER, lte(TARGET)));
+    void required_number_mustBeAtLeast_isOver() {
+        assertThrows(NotAtLeastException.class, () -> Validate.require(OVER, atLeast(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThan_under() {
-        assertThrows(NotGreaterThanException.class, () -> Validate.require(UNDER, gt(TARGET)));
+    void required_number_mustBeOver_isUnder() {
+        assertThrows(NotOverException.class, () -> Validate.require(UNDER, over(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThan_equals() {
-        assertThrows(NotGreaterThanException.class, () -> Validate.require(EQUAL, gt(TARGET)));
+    void required_number_mustBeOver_isEqual() {
+        assertThrows(NotOverException.class, () -> Validate.require(EQUAL, over(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThan_over() {
-        assertDoesNotThrow(() -> Validate.require(OVER, gt(TARGET)));
+    void required_number_mustBeOver_isOver() {
+        assertDoesNotThrow(() -> Validate.require(OVER, over(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThanOrEquals_under() {
-        assertThrows(NotGreaterThanOrEqualException.class, () -> Validate.require(UNDER, gte(TARGET)));
+    void required_number_mustBeAtMost_isUnder() {
+        assertThrows(NotAtMostException.class, () -> Validate.require(UNDER, atMost(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThanOrEquals_equals() {
-    assertDoesNotThrow(() -> Validate.require(EQUAL, gte(TARGET)));
+    void required_number_mustBeAtMost_isEqual() {
+    assertDoesNotThrow(() -> Validate.require(EQUAL, atMost(TARGET)));
     }
 
     @Test
-    void required_number_expectGreaterThanOrEquals_over() {
-        assertDoesNotThrow(() -> Validate.require(OVER, gte(TARGET)));
+    void required_number_mustBeAtMost_isOver() {
+        assertDoesNotThrow(() -> Validate.require(OVER, atMost(TARGET)));
     }
 }

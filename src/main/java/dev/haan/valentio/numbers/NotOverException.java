@@ -2,13 +2,13 @@ package dev.haan.valentio.numbers;
 
 import static java.util.Objects.requireNonNull;
 
-public class NotGreaterThanException extends NumberValidationException {
+public class NotOverException extends NumberValidationException {
 
     private final String propertyName;
     private final Number value;
 
-    public NotGreaterThanException(String propertyName, Number value) {
-        super("{0} must be greater than {1}", propertyName, value);
+    public NotOverException(String propertyName, Number value) {
+        super("{0} must be over {1}", propertyName, value);
         this.propertyName = requireNonNull(propertyName);
         this.value = requireNonNull(value);
     }

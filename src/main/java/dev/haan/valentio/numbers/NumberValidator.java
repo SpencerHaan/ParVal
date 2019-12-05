@@ -10,43 +10,43 @@ public final class NumberValidator {
         // Prevent instantiation
     }
 
-    public static <N extends Number & Comparable<N>> Validator<N> lt(N number) {
+    public static <N extends Number & Comparable<N>> Validator<N> under(N number) {
         requireNonNull(number);
         return (propertyName, value) -> {
             if (value.compareTo(number) >= 0) {
-                throw new NotLessThanException(propertyName, value);
+                throw new NotUnderException(propertyName, value);
             }
         };
     }
 
-    public static <N extends Number & Comparable<N>> Validator<N> lte(N number) {
+    public static <N extends Number & Comparable<N>> Validator<N> atLeast(N number) {
         requireNonNull(number);
         return (propertyName, value) -> {
             if (value.compareTo(number) > 0) {
-                throw new NotLessThanOrEqualException(propertyName, value);
+                throw new NotAtLeastException(propertyName, value);
             }
         };
     }
 
-    public static <N extends Number & Comparable<N>> Validator<N> gt(N number) {
+    public static <N extends Number & Comparable<N>> Validator<N> over(N number) {
         requireNonNull(number);
         return (propertyName, value) -> {
             if (value.compareTo(number) <= 0) {
-                throw new NotGreaterThanException(propertyName, value);
+                throw new NotOverException(propertyName, value);
             }
         };
     }
 
-    public static <N extends Number & Comparable<N>> Validator<N> gte(N number) {
+    public static <N extends Number & Comparable<N>> Validator<N> atMost(N number) {
         requireNonNull(number);
         return (propertyName, value) -> {
             if (value.compareTo(number) < 0) {
-                throw new NotGreaterThanOrEqualException(propertyName, value);
+                throw new NotAtMostException(propertyName, value);
             }
         };
     }
 
     public static <N extends Number & Comparable<N>> Validator<N> range(N lower, N upper) {
-        return gte(lower).andThen(lt(upper));
+        return atMost(lower).andThen(under(upper));
     }
 }
