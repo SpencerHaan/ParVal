@@ -3,7 +3,7 @@ package dev.haan.valentio.strings;
 import static dev.haan.valentio.Validate.require;
 import static dev.haan.valentio.strings.StringValidator.lengthBetween;
 import static dev.haan.valentio.strings.StringValidator.maxLength;
-import static dev.haan.valentio.strings.StringValidator.maxSize;
+import static dev.haan.valentio.strings.StringValidator.maxBytes;
 import static dev.haan.valentio.strings.StringValidator.minLength;
 import static dev.haan.valentio.strings.StringValidator.notBlank;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -73,18 +73,18 @@ class StringValidatorTest {
     }
 
     @Test
-    void maxSize_under() {
-        assertDoesNotThrow(() -> Validate.require(TEST_STRING, maxSize(5)));
+    void maxBytes_under() {
+        assertDoesNotThrow(() -> Validate.require(TEST_STRING, maxBytes(5)));
     }
 
     @Test
-    void maxSize_equal() {
-        assertDoesNotThrow(() -> Validate.require(TEST_STRING, maxSize(4)));
+    void maxBytes_equal() {
+        assertDoesNotThrow(() -> Validate.require(TEST_STRING, maxBytes(4)));
     }
 
     @Test
-    void maxSize_over() {
-        assertThrows(NotMaximumSizeException.class, () -> Validate.require(TEST_STRING, maxSize(3)));
+    void maxBytes_over() {
+        assertThrows(NotMaximumBytesException.class, () -> Validate.require(TEST_STRING, maxBytes(3)));
     }
 
     @Test

@@ -32,14 +32,14 @@ public final class StringValidator {
         return minLength.andThen(maxLength);
     }
 
-    public static <S extends String> Validator<S> maxSize(int size) {
-        return maxSize(size, Charset.defaultCharset());
+    public static <S extends String> Validator<S> maxBytes(int size) {
+        return maxBytes(size, Charset.defaultCharset());
     }
 
-    public static <S extends String> Validator<S> maxSize(int size, Charset charset) {
+    public static <S extends String> Validator<S> maxBytes(int size, Charset charset) {
         return (propertyName, value) -> {
             if (value.getBytes(charset).length > size) {
-                throw new NotMaximumSizeException(propertyName, size);
+                throw new NotMaximumBytesException(propertyName, size);
             }
         };
     }
